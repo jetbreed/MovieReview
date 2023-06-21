@@ -15,12 +15,14 @@ public class MainActivity extends AppCompatActivity {
 
     //Attributes or Variables or Fields
 
-    int name;
+    EditText movie_name;
 
+    EditText year;
 
-
-    EditText movie_name,year, duration,
-            write_review, starring, director;
+    EditText duration;
+    EditText write_review;
+    EditText starring;
+    EditText director;
 
     RatingBar ratingBar;
 
@@ -29,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     String str_movie_name, str_write_review, str_starring,
             str_director;
 
-    String int_year;
+    String str_year;
 
     String int_duration;
 
@@ -38,13 +40,6 @@ public class MainActivity extends AppCompatActivity {
     TextView view_movie_name,view_year, view_duration,
     view_write_review, view_starring, view_director,
     view_rating;
-
-
-    public void setName(String nameeto)
-    {
-        this.name = Integer.parseInt(nameeto);
-//        return name;
-    }
 
 
     @Override
@@ -74,51 +69,49 @@ public class MainActivity extends AppCompatActivity {
         view_rating = findViewById(R.id.view_rating);
 
 
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        btnSave.setOnClickListener(view -> {
 
-                try {
-                //the text you typed into the EditText Component
-                //of your design e.g the movie name "The Of War!"
-                str_movie_name = movie_name.getText().toString();
-                int_year = year.getText().toString();
-                int_duration = duration.getText().toString();
-                str_write_review = write_review.getText().toString();
-                str_starring = starring.getText().toString();
-                str_director = director.getText().toString();
-                rating = ratingBar.getRating();
+            try {
+            //the text you typed into the EditText Component
+            //of your design e.g the movie name "The Of War!"
+            str_movie_name = movie_name.getText().toString();
+            str_year = year.getText().toString();
+            int_duration = duration.getText().toString();
+            str_write_review = write_review.getText().toString();
+            str_starring = starring.getText().toString();
+            str_director = director.getText().toString();
+            rating = ratingBar.getRating();
 
-                if( str_movie_name.equalsIgnoreCase("")
-                        || int_year.equalsIgnoreCase("")
-                        || int_duration.equalsIgnoreCase("")
-                        || str_write_review.equalsIgnoreCase("")
-                        || str_starring.equalsIgnoreCase("")
-                        || str_director.equalsIgnoreCase("")
-                )
-                {
-                    Toast.makeText(MainActivity.this,
-                            "Input Required",
-                            Toast.LENGTH_LONG).show();
-                }
-                else
-                {
-                    Toast.makeText(MainActivity.this,
-                            "Data Saved Successful",
-                            Toast.LENGTH_SHORT).show();
-
-                    view_movie_name.setText(str_movie_name);
-                    view_year.setText(int_year);
-                    view_duration.setText(int_duration);
-                    view_write_review.setText(str_write_review);
-                    view_starring.setText(str_starring);
-                    view_director.setText(str_director);
-                    view_rating.setText(rating.toString());
-
-                }
+            if( str_movie_name.equalsIgnoreCase("")
+                    || str_year.equalsIgnoreCase("")
+                    || int_duration.equalsIgnoreCase("")
+                    || str_write_review.equalsIgnoreCase("")
+                    || str_starring.equalsIgnoreCase("")
+                    || str_director.equalsIgnoreCase("")
+            )
+            {
                 Toast.makeText(MainActivity.this,
-                        "Movie Data Saved",
+                        "Input Required",
                         Toast.LENGTH_LONG).show();
+            }
+            else
+            {
+                Toast.makeText(MainActivity.this,
+                        "Data Saved Successful",
+                        Toast.LENGTH_SHORT).show();
+
+                view_movie_name.setText(str_movie_name);
+                view_year.setText(str_year);
+                view_duration.setText(int_duration);
+                view_write_review.setText(str_write_review);
+                view_starring.setText(str_starring);
+                view_director.setText(str_director);
+                view_rating.setText(rating.toString());
+
+            }
+            Toast.makeText(MainActivity.this,
+                    "Movie Data Saved",
+                    Toast.LENGTH_LONG).show();
 
 //                    movie_name.setText("");
 //                    year.setText("");
@@ -128,12 +121,12 @@ public class MainActivity extends AppCompatActivity {
 //                    director.setText("");
 //                    ratingBar.setRating(0);
 
-                }
-                catch (Exception ex)
-                {
-                    Toast.makeText(MainActivity.this,
-                            ex.getMessage(),
-                            Toast.LENGTH_SHORT).show();
+            }
+            catch (Exception ex)
+            {
+                Toast.makeText(MainActivity.this,
+                        ex.getMessage(),
+                        Toast.LENGTH_SHORT).show();
 //
 //                    movie_name.setText("");
 //                    year.setText("");
@@ -142,7 +135,6 @@ public class MainActivity extends AppCompatActivity {
 //                    starring.setText("");
 //                    director.setText("");
 //                    ratingBar.setRating(0);
-                }
             }
         });
     }
